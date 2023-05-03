@@ -3790,7 +3790,13 @@ ${COMMENT_TAG}`;
                         commentData.start_line = comment.startLine;
                     }
                     console.log({ commentData });
-                    await _octokit__WEBPACK_IMPORTED_MODULE_2__/* .octokit.pulls.createReviewComment */ .K.pulls.createReviewComment(commentData);
+                    try {
+                        const res = await _octokit__WEBPACK_IMPORTED_MODULE_2__/* .octokit.pulls.createReviewComment */ .K.pulls.createReviewComment(commentData);
+                        console.log('res is : ', res);
+                    }
+                    catch (e) {
+                        console.log('e is : ', e);
+                    }
                 }
                 commentCounter++;
                 (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.info)(`Comment ${commentCounter}/${this.reviewCommentsBuffer.length} posted`);
