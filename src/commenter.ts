@@ -245,6 +245,8 @@ ${COMMENT_TAG}`
             commentData.start_line = comment.startLine
           }
 
+          console.log({commentData});
+
           await octokit.pulls.createReviewComment(commentData)
         }
 

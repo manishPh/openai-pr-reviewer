@@ -3353,7 +3353,9 @@ var ChatGPTUnofficialProxyAPI = class {
                 }
               }
             } catch (err) {
-              reject(err);
+              if (this._debug) {
+                console.warn("chatgpt unexpected JSON error", err);
+              }
             }
           },
           onError: (err) => {
@@ -3787,6 +3789,7 @@ ${COMMENT_TAG}`;
                         // eslint-disable-next-line camelcase
                         commentData.start_line = comment.startLine;
                     }
+                    console.log({ commentData });
                     await _octokit__WEBPACK_IMPORTED_MODULE_2__/* .octokit.pulls.createReviewComment */ .K.pulls.createReviewComment(commentData);
                 }
                 commentCounter++;
