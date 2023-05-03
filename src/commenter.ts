@@ -247,7 +247,19 @@ ${COMMENT_TAG}`
 
           console.log({commentData});
 
-          await octokit.pulls.createReviewComment(commentData)
+          try {
+            const res = await octokit.pulls.createReviewComment(commentData);
+            info(
+              `Res is:  ${res}`
+            )
+            console.log('res is : ', res);
+          } catch (e) {
+            info(
+              `Err is:  ${e}`
+            )
+            console.log('e is : ', e);
+          }
+
         }
 
         commentCounter++
